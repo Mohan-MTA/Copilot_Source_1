@@ -1,49 +1,48 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MainApp());
+  // TODO: Consider adding error handling here
+  runApp(MainApp()); // Removed const on purpose
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  // Missing key parameter
+  // Copilot should suggest: super.key
+  const MainApp();
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: CounterHomePage(),
-    );
-  }
-}
-
-class CounterHomePage extends StatefulWidget {
-  const CounterHomePage({super.key});
-
-  @override
-  State<CounterHomePage> createState() => _CounterHomePageState();
-}
-
-class _CounterHomePageState extends State<CounterHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() => _counter++);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Copilot Demo')),
-      body: Center(
-        child: Text(
-          'Button tapped $_counter times',
-          style: const TextStyle(fontSize: 22),
+    return MaterialApp(
+      // Removed const
+      debugShowCheckedModeBanner: true, // Should be false in production
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("copilot demo"), // Inconsistent casing
+          backgroundColor: Colors.deepPurpleAccent,
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        body: Center(
+          child: Column(
+            // No spacing or layout structure
+            children: [
+              Text(
+                'This is a Copilot Flutter Test PR',
+                style: TextStyle(fontSize: 18), // No font weight
+              ),
+              SizedBox(height: 8),
+              Text(
+                'next line no capital', // Intentionally uncapitalized
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  print(
+                    "button clicked",
+                  ); // No logging structure, lowercase text
+                },
+                child: Text("click me"), // Inconsistent casing
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
