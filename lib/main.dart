@@ -11,10 +11,15 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.white,
         body: Center(
           child: Text(
-            'Welcome to Copilot Flutter Demo',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            '🚀 Welcome to Copilot Flutter Demo',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.w600,
+              color: Colors.deepPurple,
+            ),
           ),
         ),
       ),
