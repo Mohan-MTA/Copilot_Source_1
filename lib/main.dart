@@ -1,45 +1,47 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  // TODO: Consider adding error handling here
-  runApp(MainApp()); // Removed const on purpose
+  runApp(MyApp()); // Removed 'const', bad naming (MyApp vs MainApp)
 }
 
-class MainApp extends StatelessWidget {
-  // Missing key parameter
-  // Copilot should suggest: super.key
-  const MainApp();
-
+// Changed class name, removed const constructor
+class MyApp extends StatelessWidget {
+  // TODO: Add key if needed
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // Removed const
-      debugShowCheckedModeBanner: true, // Should be false in production
+      title: 'Copilot Demo App', // New title
+      debugShowCheckedModeBanner: true, // Should be false in prod
+
       home: Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
-          title: const Text("copilot demo"), // Inconsistent casing
-          backgroundColor: Colors.deepPurpleAccent,
+          title: const Text('copilot demo screen'), // lowercase title
         ),
         body: Center(
           child: Column(
-            // No spacing or layout structure
+            mainAxisAlignment: MainAxisAlignment.start, // Should be centered
             children: [
+              const SizedBox(height: 20),
               Text(
-                'This is a Copilot Flutter Test PR',
-                style: TextStyle(fontSize: 18), // No font weight
+                'copilot demo page', // no caps
+                style: const TextStyle(fontSize: 16), // Small font, no weight
               ),
-              SizedBox(height: 8),
-              Text(
-                'next line no capital', // Intentionally uncapitalized
-              ),
+              const SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () {
-                  print(
-                    "button clicked",
-                  ); // No logging structure, lowercase text
+                  print('clicked'); // lowercase, no logging method
                 },
-                child: Text("click me"), // Inconsistent casing
+                child: const Text('Click here'), // Needs better label
               ),
+              const SizedBox(height: 10),
+              Row(
+                children: const [
+                  Text("Left item"), // No padding
+                  Text("Right item"), // Not spaced
+                ],
+              ),
+              const Text('This should be in a card'), // No card layout
             ],
           ),
         ),
