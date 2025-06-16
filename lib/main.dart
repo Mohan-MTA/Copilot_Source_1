@@ -1,47 +1,32 @@
+// main.dart
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp()); // Removed 'const', bad naming (MyApp vs MainApp)
+  runApp(const MainApp());
 }
 
-// Changed class name, removed const constructor
-class MyApp extends StatelessWidget {
-  // TODO: Add key if needed
+class MainApp extends StatelessWidget {
+  const MainApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Copilot Demo App', // New title
-      debugShowCheckedModeBanner: true, // Should be false in prod
+    // Direct logic in UI — not a best practice
+    final now = DateTime.now();
+    final greeting = now.hour < 12 ? 'Good Morning!' : 'Good Evening!';
 
+    return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          title: const Text('copilot demo screen'), // lowercase title
-        ),
+        appBar: AppBar(title: const Text('Copilot Review Test')),
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start, // Should be centered
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 20),
+              Text(greeting), // Copilot may suggest moving this logic out
+              const SizedBox(height: 10),
               Text(
-                'copilot demo page', // no caps
-                style: const TextStyle(fontSize: 16), // Small font, no weight
+                'This is a review test',
+                style: TextStyle(fontWeight: FontWeight.w600),
               ),
-              const SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {
-                  print('clicked'); // lowercase, no logging method
-                },
-                child: const Text('Click here'), // Needs better label
-              ),
-              const SizedBox(height: 10),
-              Row(
-                children: const [
-                  Text("Left item"), // No padding
-                  Text("Right item"), // Not spaced
-                ],
-              ),
-              const Text('This should be in a card'), // No card layout
             ],
           ),
         ),
